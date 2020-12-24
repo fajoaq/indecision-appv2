@@ -7,7 +7,7 @@ import { FcGoogle } from 'react-icons/fc';
 export const LoginPage = ({ startLogin }) => (
     <div className="box-layout">
         <div className="box-layout__box">
-            <h1 className="box-layout__title">Expensify</h1>
+            <h1 className="box-layout__title">Indecision</h1>
             <p>Let a.i make the decision for you!</p>
             <div className="button-group">
                 <button id="googleLogin" className="button button--login" onClick={ startLogin }>
