@@ -5,8 +5,8 @@ export default (state = [], action) => {
                 ...state,
                 action.decision
             ];
-        case 'LOGOUT':
-            return [];
+        case 'SET_EXPENSES':
+            return action.expenses;
         default:
             return state;
     };

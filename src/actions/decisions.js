@@ -25,3 +25,26 @@ export const addDecision = (decision) => ({
     type: 'ADD_DECISION',
     decision
   });
+
+  //START SET_EXPENSES
+export const startSetDecisions = () => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+     return database.ref(`users/${uid}/decisions`).once('value').then((snapshot) => {
+      const decisions = [];
+      snapshot.forEach((decision) => {
+        decisions.push({
+          id: decision.key,
+          ...decision.val()
+        });
+      });
+      dispatch(setDecisions(decisions));
+    });
+  };
+};
+
+// SET_EXPENSES
+export const setDecisions = (decisions) => ({
+  type: 'SET_DECISIONS',
+  decisions
+});

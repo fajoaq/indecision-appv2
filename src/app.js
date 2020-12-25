@@ -7,6 +7,7 @@ import configureStore from './store/configureStore';
 import { firebase } from './firebase/firebase';
 
 import { login, logout } from './actions/auth';
+import { startSetDecisions } from './actions/decisions';
 import LoadingPage from './components/LoadingPage';
 
 import 'normalize.css/normalize.css';
@@ -32,6 +33,7 @@ ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 firebase.auth().onAuthStateChanged((user) => {
   if(user) {
     store.dispatch(login(user.uid));
+    store.dispatch(startSetDecisions());
     renderApp();
     if (history.location.pathname === '/') {
       history.push('/dashboard');
