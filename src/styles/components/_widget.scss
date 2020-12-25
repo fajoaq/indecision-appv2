@@ -11,6 +11,7 @@
     background: $blue;
     color: $off-white;
     padding: $m-size;
+    line-height: 2;
 }
 .widget-header__title {
     margin: 0;
@@ -23,4 +24,14 @@
     padding: $l-size;
     text-align: center;
     border-bottom: 1px solid lighten($light-blue, 10%);
+}
+.widget__input {
+    display: grid;
+    height: $l-size;
+    word-break: break-all;
+    margin: 0 $l-size $l-size $l-size;
+}
+
+.widget__input-text {
+    padding-left: $m-size;
 }
