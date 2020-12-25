@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addDecision } from '../actions/decisions';
+import { startAddDecision } from '../actions/decisions';
 
 import AddOption from './AddOption';
 import Action from './Action';
@@ -12,7 +12,7 @@ export class DashboardPage extends React.Component {
   state = {
     decisionList: this.props.decisionList,
     options: [],
-    decisionTitle: "",
+    decisionTitle: "No decision title.",
     selectedOption: undefined
   };
   handleTitleChange = ({ target }) => {
@@ -40,11 +40,11 @@ export class DashboardPage extends React.Component {
     this.setState((prevState) => ({
       selectedOption: option,
       decisionList: prevState.decisionList.concat(decisionItem),
-      decisionTitle: ""
+      decisionTitle: "No decision title."
     }));
 
     document.querySelector('#titleInput').value = null;
-    this.props.addDecision(decisionItem);
+    this.props.startAddDecision(decisionItem);
   };
   handleAddOption = (option) => {
     if (!option) {
@@ -119,7 +119,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addDecision: (decision) => dispatch(addDecision(decision))
+  startAddDecision: (decision) => dispatch(startAddDecision(decision))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardPage);

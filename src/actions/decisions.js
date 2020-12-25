@@ -2,21 +2,19 @@ import database from '../firebase/firebase';
 
 
 // START ADD_DECISION
-export const startAddDecision = (decision) => {
+export const startAddDecision = (decisionData = {}) => {
     return (dispatch, getState) => {
       const uid = getState().auth.uid;
       const {
-        description = '',
-        note = '',
-        amount = 0,
-        createdAt = 0
-      } = expenseData;
+        decisionTitle = '',
+        option = '',
+      } = decisionData;
   
-      const expense = { description, note, amount, createdAt };
-      return database.ref(`users/${uid}/expenses`).push(expense).then((ref) => {
-        dispatch(addExpense({
+      const decision = { decisionTitle, option };
+      return database.ref(`users/${uid}/decisions`).push(decision).then((ref) => {
+        dispatch(addDecision({
           id: ref.key,
-          ...expense
+          ...decision
         }));
       });
     };
