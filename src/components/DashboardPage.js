@@ -10,7 +10,6 @@ import ResultsList from './ResultsList';
 
 export class DashboardPage extends React.Component {
   state = {
-    decisionList: this.props.decisionList,
     options: [],
     decisionTitle: "No decision title.",
     selectedOption: undefined
@@ -39,7 +38,6 @@ export class DashboardPage extends React.Component {
 
     this.setState((prevState) => ({
       selectedOption: option,
-      decisionList: prevState.decisionList.concat(decisionItem),
       decisionTitle: "No decision title."
     }));
 
@@ -102,7 +100,7 @@ export class DashboardPage extends React.Component {
             />
           </div>
           <div className="widget">
-            <ResultsList decisionList= { this.state.decisionList }/>
+            <ResultsList />
           </div>
         </div>
         <OptionModal
@@ -114,12 +112,8 @@ export class DashboardPage extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  decisionList: state.decisions
-});
-
 const mapDispatchToProps = (dispatch) => ({
   startAddDecision: (decision) => dispatch(startAddDecision(decision))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardPage);
+export default connect(undefined, mapDispatchToProps)(DashboardPage);
